@@ -23,17 +23,36 @@ function Container(array) {
             let diff = j - i
             if (array[i] < array[j]) {
                 holder = diff * (array[i])
-                holder > higher ? higher = holder : null
             }
             else {
                 holder = diff * (array[j])
-                holder > higher ? higher = holder : null
             }
+            higher = Math.max(holder, higher)
         }
-        higher > mostWater ? mostWater = higher : null
+        mostWater = Math.max(higher, mostWater)
     }
     return mostWater
 }
 
-console.log(Container([1,1]))
-console.log(Container([1,8,6,2,5,4,8,3,7]))
+function Container2(array) {
+    let max_area = 0;
+    let lp = 0;
+    let rp = array.length - 1;
+
+    while (lp < rp) {
+        let diff = rp - lp
+        if (array[lp] < array[rp]) {
+            max_area = Math.max(max_area, array[lp] * diff)
+            lp += 1
+        }
+        else {
+            max_area = Math.max(max_area, array[rp] * diff)
+            rp -= 1
+        }
+    }
+
+    return max_area
+}
+
+console.log(Container2([1,1]))
+console.log(Container2([1,8,6,2,5,4,8,3,7]))
