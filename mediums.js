@@ -16,18 +16,17 @@
 function Container(array) {
     let mostWater = 0
     const arrLen = array.length
-    for (let i = 0; i < arrLen; i++) {
+    for (let i = 0; i < arrLen - 1; i++) {
         let higher = 0;
-        let counter = 0;
         let holder = 0;
         for (let j = i + 1; j < arrLen; j++) {
-            counter += 1;
+            let diff = j - i
             if (array[i] < array[j]) {
-                holder = (j - i) * (array[i])
+                holder = diff * (array[i])
                 holder > higher ? higher = holder : null
             }
             else {
-                holder = (j - i) * (array[j])
+                holder = diff * (array[j])
                 holder > higher ? higher = holder : null
             }
         }
