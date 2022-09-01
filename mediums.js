@@ -98,4 +98,20 @@ function ProductArraySelf2(nums) {
     return ansArr
 }
  
-console.log(ProductArraySelf2([4,5,1,8,2]))
+// console.log(ProductArraySelf2([4,5,1,8,2]))
+
+function ProductArraySelf2Space(nums) {
+    const ansArr = (new Array(nums.length)).fill(1)
+    let mulNum = 1
+
+    for (let i = 1; i < nums.length; i++) {
+        ansArr[i] = nums[i-1]*ansArr[i-1]
+    }
+    for (let i = nums.length - 2; i >= 0; i--) {
+        mulNum *= nums.pop()
+        ansArr[i] = ansArr[i]*mulNum
+    }
+    return ansArr
+}
+
+console.log(ProductArraySelf2Space([4,5,1,8,2]))
