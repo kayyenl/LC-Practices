@@ -143,6 +143,27 @@ function BuyLessBrute(prices) {
     return profit
 }
 
-console.log(BuyLessBrute([7,1,5,3,6,4]))
-console.log(BuyLessBrute([7,6,4,3,1]))
-console.log(BuyLessBrute([0,3,8,6,8,6,6,8,2,0,2,7]))
+// console.log(BuyLessBrute([7,1,5,3,6,4]))
+// console.log(BuyLessBrute([7,6,4,3,1]))
+// console.log(BuyLessBrute([0,3,8,6,8,6,6,8,2,0,2,7]))
+
+
+function BuySellOptimal(prices) {
+    let profit = 0
+    let lp = 0
+    let rp = 1
+    let maxProfit = 0 
+    let currProfit
+
+    while (rp < prices.length) {
+        currProfit = prices[rp] - prices[lp]
+        maxProfit = Math.max(maxProfit, currProfit)
+        if (prices[rp] > prices[lp]) {
+            rp += 1
+        } else {
+            lp = rp
+            rp += 1
+        }
+    }
+    return maxProfit
+}
