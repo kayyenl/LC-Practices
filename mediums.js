@@ -97,5 +97,5 @@ function ProductArraySelf2(nums) {
     }
     return ansArr
 }
-
+ 
 console.log(ProductArraySelf2([4,5,1,8,2]))
