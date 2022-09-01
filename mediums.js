@@ -1,4 +1,4 @@
-// 1. Container with Most Water (easy)
+// 1. Container with Most Water (38 mintues, O(n^2) time)
 
 // You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
 
@@ -54,5 +54,5 @@ function Container2(array) {
     return max_area
 }
 
-console.log(Container2([1,1]))
-console.log(Container2([1,8,6,2,5,4,8,3,7]))
+// console.log(Container2([1,1]))
+// console.log(Container2([1,8,6,2,5,4,8,3,7]))
