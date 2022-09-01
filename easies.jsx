@@ -65,6 +65,84 @@ function TwoSum(nums, target) {
     return ansArray
 }
 
-console.log(TwoSum([2,7,11,15], 9))
-console.log(TwoSum([3,2,4], 6))
-console.log(TwoSum([3,3], 6))
+// console.log(TwoSum([2,7,11,15], 9))
+// console.log(TwoSum([3,2,4], 6))
+// console.log(TwoSum([3,3], 6))
+
+// -------------------------------------------------------------------
+
+// 3. Best time to buy and sell stock
+// You are given an array prices where prices[i] is the price of a given stock on the ith day.
+
+// You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+// Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+
+// Example 1:
+// Input: prices = [7,1,5,3,6,4]
+// Output: 5
+// Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+// Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+
+// Example 2:
+// Input: prices = [7,6,4,3,1]
+// Output: 0
+// Explanation: In this case, no transactions are done and the max profit = 0.
+
+function BuySell(prices) {
+    const priceLen = prices.length
+    let leftp = 0
+    let rightp = priceLen - 1
+    let profit = 0
+
+    while (leftp < rightp) {
+        profit = Math.max(profit, prices[rightp] - prices[leftp])
+        if (prices[leftp] > prices[rightp]) {
+            leftp += 1
+        } else {
+            rightp -= 1
+        }
+    }
+    return profit
+}
+// console.log(BuySell([7,1,5,3,6,4]))
+// console.log(BuySell([7,6,4,3,1]))
+
+function BuyBrute(prices) {
+    let profit = 0
+
+    for (let i = 0; i < prices.length; i++) {
+        for (let j = i + 1; j < prices.length; j++) {
+            profit = Math.max(profit, prices[j] - prices[i])
+        }
+    }
+    return profit
+}
+// BuyBrute was TLE
+// console.log(BuyBrute([7,1,5,3,6,4]))
+// console.log(BuyBrute([7,6,4,3,1]))
+
+function BuyLessBrute(prices) {
+    let profit = 0
+    let investCost = 0
+    let prevCost
+
+    for (let i = 0; i < prices.length; i++) {
+        if (i == 0) {
+            investCost = prices[0]
+        } else {
+            investCost = Math.min(prices[i], prevCost)
+        }
+        if (investCost !== prevCost) {
+            for (let j = i + 1; j < prices.length; j++) {
+                profit = Math.max(profit, prices[j] - prices[i])
+            }
+        }
+        prevCost = investCost
+    }
+    return profit
+}
+
+console.log(BuyLessBrute([7,1,5,3,6,4]))
+console.log(BuyLessBrute([7,6,4,3,1]))
+console.log(BuyLessBrute([0,3,8,6,8,6,6,8,2,0,2,7]))
