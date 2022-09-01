@@ -55,11 +55,11 @@ function TwoSum(nums, target) {
     const map = new Map()
     const ansArray = []
     for (let i = 0; i <= (nums.length - 1); i++) {
-        if (map.get(nums[i]) !== undefined) {
+        if (map.has(nums[i])) {
             ansArray.push(i)
-            ansArray.push(map.get(nums[i])[1])
+            ansArray.push(map.get(nums[i]))
         } else {
-            map.set(target - nums[i], [nums[i], i])
+            map.set(target - nums[i], i)
         }
     } 
     return ansArray
