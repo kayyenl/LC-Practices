@@ -114,7 +114,7 @@ function ProductArraySelf2Space(nums) {
     return ansArr
 }
 
-console.log(ProductArraySelf2Space([4,5,1,8,2]))
+// console.log(ProductArraySelf2Space([4,5,1,8,2]))
 
 // -------------------------------------------------------------------
 
@@ -138,4 +138,26 @@ console.log(ProductArraySelf2Space([4,5,1,8,2]))
 // Input: nums = [5,4,-1,7,8]
 // Output: 23
 
-function MaxSubarray
+function MaxSubarray(nums) {
+    const leftArr = []
+    const rightArr = []
+
+    for (let i = 0; i < nums.length; i++) {
+        if (i === 0) {
+            leftArr.push(nums[i])
+        } else {
+            leftArr.push(nums[i] + leftArr[i-1])
+        } 
+    } 
+    let counter = 0
+    for (let i = nums.length - 1; i >= 0; i--) {
+        if (i === nums.length - 1) {
+            rightArr.unshift(nums[i])
+        } else {
+            console.log(rightArr[counter])
+            rightArr.unshift(nums[i] + rightArr[counter])
+        } 
+    } return rightArr
+}
+
+console.log(MaxSubarray([5,4,-1,7,8]))
