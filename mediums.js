@@ -118,7 +118,7 @@ function ProductArraySelf2Space(nums) {
 
 // -------------------------------------------------------------------
 
-// 3. Maximum Subarray
+// 3. Maximum Subarray (50 mins, got a good idea of how to solve)
 // Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
 
 // A subarray is a contiguous part of an array.
@@ -141,6 +141,9 @@ function ProductArraySelf2Space(nums) {
 function MaxSubarray(nums) {
     const leftArr = []
     const rightArr = []
+    let leftp = 0
+    let rightp = nums.length - 1
+    let maxNeg = 0
 
     for (let i = 0; i < nums.length; i++) {
         if (i === 0) {
@@ -154,10 +157,12 @@ function MaxSubarray(nums) {
         if (i === nums.length - 1) {
             rightArr.unshift(nums[i])
         } else {
-            console.log(rightArr[counter])
             rightArr.unshift(nums[i] + rightArr[counter])
         } 
-    } return rightArr
+    } 
+    while (lp < rp) {
+        maxNeg = Math.Max(maxNeg, )
+    }
 }
 
 console.log(MaxSubarray([5,4,-1,7,8]))
