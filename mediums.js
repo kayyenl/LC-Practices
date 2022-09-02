@@ -59,7 +59,7 @@ function Container2(array) {
 
 // -------------------------------------------------------------------
 
-// 2. Product of Array Except Self
+// 2. Product of Array Except Self (Solved with hint, could do follow up qn)
 // Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
 
 // The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
@@ -115,3 +115,27 @@ function ProductArraySelf2Space(nums) {
 }
 
 console.log(ProductArraySelf2Space([4,5,1,8,2]))
+
+// -------------------------------------------------------------------
+
+// 3. Maximum Subarray
+// Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+
+// A subarray is a contiguous part of an array.
+
+ 
+
+// Example 1:
+// Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+// Output: 6
+// Explanation: [4,-1,2,1] has the largest sum = 6.
+
+// Example 2:
+// Input: nums = [1]
+// Output: 1
+
+// Example 3:
+// Input: nums = [5,4,-1,7,8]
+// Output: 23
+
+function MaxSubarray
