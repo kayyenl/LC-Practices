@@ -165,4 +165,25 @@ function MaxSubarray(nums) {
     }
 }
 
-console.log(MaxSubarray([5,4,-1,7,8])) 
+// console.log(MaxSubarray([5,4,-1,7,8])) 
+
+function MaxSubarray2(nums) {
+    let maxUpTillHere 
+    let maxSoFar
+
+    for (let i = 0; i < nums.length; i++) {
+        if (i === 0) {
+            maxUpTillHere = nums[i]
+            maxSoFar = nums[i]
+        } else {
+            maxUpTillHere = Math.max(nums[i], maxUpTillHere + nums[i])
+        }
+        maxSoFar = Math.max(maxSoFar, maxUpTillHere)
+    }
+    return maxSoFar
+}
+
+console.log(MaxSubarray2([5,4,-1,7,8])) 
+console.log(MaxSubarray2([-2,1,-3,4,-1,2,1,-5,4])) 
+console.log(MaxSubarray2([1])) 
+console.log(MaxSubarray2([1,2])) 
