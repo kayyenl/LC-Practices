@@ -183,7 +183,7 @@ function MaxSubarray2(nums) {
     return maxSoFar
 }
 
-console.log(MaxSubarray2([5,4,-1,7,8])) 
-console.log(MaxSubarray2([-2,1,-3,4,-1,2,1,-5,4])) 
-console.log(MaxSubarray2([1])) 
-console.log(MaxSubarray2([1,2])) 
+// console.log(MaxSubarray2([5,4,-1,7,8])) 
+// console.log(MaxSubarray2([-2,1,-3,4,-1,2,1,-5,4])) 
+// console.log(MaxSubarray2([1])) 
+// console.log(MaxSubarray2([1,2]))   
