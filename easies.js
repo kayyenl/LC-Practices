@@ -223,3 +223,43 @@ function isPalindrome(x) {
 // Input: strs = ["dog","racecar","car"]
 // Output: ""
 // Explanation: There is no common prefix among the input strings.
+
+function commonPrefix(strs) {
+    let returnStr = ""
+    let continueWhile = true
+    let counter = -1
+    let inLoopCount = 0
+    const set = new Set()
+    while (continueWhile) {
+        counter += 1
+        strs.map((str) => {
+            set.add(str.slice(counter, counter + 1))
+            inLoopCount += 1
+        })
+        console.log("hello")
+        if (set.size === 1 
+            && !set.has(undefined) && inLoopCount == strs.length) {
+            console.log("hi there")
+            returnStr += [...set][0]
+            set.clear()
+        } else {continueWhile = false}
+        inLoopCount = 0
+    } return returnStr
+}
+
+// console.log(commonPrefix(["flower","flow","flight"]))
+// console.log(commonPrefix(["dog","racecar","car"]))
+// console.log(commonPrefix([""]))
+
+function commonPrefix2(strs) {
+    let bringingString = strs[0]
+    for (let i = 1; i < strs.length; i++) {
+        while (strs[i].indexOf(bringingString) !== 0) {
+            bringingString = bringingString.substring(0, bringingString.length - 1)
+        }
+    } return bringingString
+}
+
+console.log(commonPrefix2(["flower","flow","flight"]))
+console.log(commonPrefix2(["dog","racecar","car"]))
+console.log(commonPrefix2(["c","acc","ccc"]))
