@@ -193,8 +193,16 @@ function BuySellOptimal(prices) {
 // Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 
 function isPalindrome(x) {
-    if (x < 0) return false
-    if (x < 10 || x % 11 === 0) return true
+    if (x < 0) return false;
+    const numArr = x.toString().split("")
+    let firstNum, lastNum
+    while (numArr.length > 1) {
+        firstNum = numArr.shift()
+        lastNum = numArr.pop()
+        if (firstNum != lastNum) return false
+    } return true
 }
 
-console
+console.log(isPalindrome(121))
+console.log(isPalindrome(-121))
+console.log(isPalindrome(10))
