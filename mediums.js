@@ -280,3 +280,63 @@ function fastMaxProdArray(nums) {
 // Output: 3
 // Explanation: The answer is "wke", with the length of 3.
 // Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+
+function LongestSubstrNoRepeats(s) {
+    const strArr = s.split("")
+    const revArr = s.split("").reverse()
+    return Math.max(findMax(strArr), findMax(revArr))
+}
+
+function findMax(s) {
+    let max = 0
+    let size = 0
+    const set = new Set()
+    for (let i = 0; i < s.length; i++) {
+        set.add(s[i])
+        max = Math.max(set.size, max)
+        if (set.size === size) { //check if there is repeats
+            set.clear()
+            set.add(s[i])
+            size = 1
+        } else {
+            size += 1
+        }
+    } return max
+}
+
+// console.log(LongestSubstrNoRepeats("abcabcbb"))
+// console.log(LongestSubstrNoRepeats("bbbbb"))
+// console.log(LongestSubstrNoRepeats("pwwkew"))
+// console.log(LongestSubstrNoRepeats("dvdf"))
+// console.log(findMax("abcabcbb"))
+// console.log(findMax("bbbbb"))
+// console.log(findMax("pwwkew"))
+// console.log(findMax("dvdf"))
+
+function longestSubstring2(s) {
+    let max = 0
+    let size = 0
+    const strArr = s.split("")
+    const set = new Set()
+    for (let i = 0; i < s.length; i++) {
+        set.add(strArr[i])
+        if (set.size === size) { //check if there is repeats
+            console.log("hello")
+            let shifted = strArr.shift()
+            size -= 1
+            while (shifted !== strArr[i])  {
+                shifted = strArr.shift()
+                set.delete(shifted)
+                size -= 1
+            } set.add(strArr[i])
+        } else {
+            size += 1
+        }
+        Math.max(max, set.size)
+    } return max
+}
+console.log(longestSubstring2("abcabcbb"))
+console.log(longestSubstring2("bbbbb"))
+console.log(longestSubstring2("pwwkew"))
+console.log(longestSubstring2("dvdf"))
+console.log(longestSubstring2("asjrgapa"))
