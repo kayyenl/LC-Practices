@@ -240,6 +240,43 @@ function BFMaxProdArray(nums) {
     } return maxNum
 }
 
-console.log(BFMaxProdArray([2,3,-2,4]))
-console.log(BFMaxProdArray([-2,0,-1]))
-console.log(BFMaxProdArray([0,2]))
+// console.log(BFMaxProdArray([2,3,-2,4]))
+// console.log(BFMaxProdArray([-2,0,-1]))
+// console.log(BFMaxProdArray([0,2]))
+
+function fastMaxProdArray(nums) {
+    let maxSoFar = nums[0]
+    let max = 1
+    let min = 1
+    for (let i = 0; i < nums.length; i++) {
+        let temp = max
+        max = Math.max(max * nums[i], min * nums[i], nums[i])
+        min = Math.min(temp * nums[i], min * nums[i], nums[i])
+        maxSoFar = Math.max(maxSoFar, max)
+    } return maxSoFar
+}
+
+// console.log(fastMaxProdArray([2,3,-2,4]))
+// console.log(fastMaxProdArray([-2,0,-1]))
+// console.log(fastMaxProdArray([0,2]))
+
+// -------------------------------------------------------------------
+// 5. Longest Substring Without Repeating Characters
+// Given a string s, find the length of the longest substring without repeating characters.
+
+
+// Example 1:
+// Input: s = "abcabcbb"
+// Output: 3
+// Explanation: The answer is "abc", with the length of 3.
+
+// Example 2:
+// Input: s = "bbbbb"
+// Output: 1
+// Explanation: The answer is "b", with the length of 1.
+
+// Example 3:
+// Input: s = "pwwkew"
+// Output: 3
+// Explanation: The answer is "wke", with the length of 3.
+// Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.

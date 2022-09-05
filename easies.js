@@ -239,20 +239,20 @@ function commonPrefix(strs) {
         console.log("hello")
         if (set.size === 1 
             && !set.has(undefined) && inLoopCount == strs.length) {
-            console.log("hi there")
-            returnStr += [...set][0]
-            set.clear()
-        } else {continueWhile = false}
-        inLoopCount = 0
-    } return returnStr
-}
-
-// console.log(commonPrefix(["flower","flow","flight"]))
-// console.log(commonPrefix(["dog","racecar","car"]))
-// console.log(commonPrefix([""]))
-
-function commonPrefix2(strs) {
-    let bringingString = strs[0]
+                console.log("hi there")
+                returnStr += [...set][0]
+                set.clear()
+            } else {continueWhile = false}
+            inLoopCount = 0
+        } return returnStr
+    }
+    
+    // console.log(commonPrefix(["flower","flow","flight"]))
+    // console.log(commonPrefix(["dog","racecar","car"]))
+    // console.log(commonPrefix([""]))
+    
+    function commonPrefix2(strs) {
+        let bringingString = strs[0]
     for (let i = 1; i < strs.length; i++) {
         while (strs[i].indexOf(bringingString) !== 0) {
             bringingString = bringingString.substring(0, bringingString.length - 1)
@@ -260,6 +260,8 @@ function commonPrefix2(strs) {
     } return bringingString
 }
 
-console.log(commonPrefix2(["flower","flow","flight"]))
-console.log(commonPrefix2(["dog","racecar","car"]))
-console.log(commonPrefix2(["c","acc","ccc"]))
+// console.log(commonPrefix2(["flower","flow","flight"]))
+// console.log(commonPrefix2(["dog","racecar","car"]))
+// console.log(commonPrefix2(["c","acc","ccc"]))
+
+// -------------------------------------------------------------------
