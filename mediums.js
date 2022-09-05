@@ -320,23 +320,49 @@ function longestSubstring2(s) {
     const set = new Set()
     for (let i = 0; i < s.length; i++) {
         set.add(strArr[i])
+        size = set.size
         if (set.size === size) { //check if there is repeats
-            console.log("hello")
             let shifted = strArr.shift()
-            size -= 1
             while (shifted !== strArr[i])  {
                 shifted = strArr.shift()
                 set.delete(shifted)
-                size -= 1
-            } set.add(strArr[i])
-        } else {
-            size += 1
-        }
-        Math.max(max, set.size)
+            } 
+            set.add(strArr[i])
+        } 
+        // console.log(set)
+        max = Math.max(max, size)
+        // console.log(max, size)
     } return max
 }
-console.log(longestSubstring2("abcabcbb"))
-console.log(longestSubstring2("bbbbb"))
-console.log(longestSubstring2("pwwkew"))
-console.log(longestSubstring2("dvdf"))
-console.log(longestSubstring2("asjrgapa"))
+// console.log(longestSubstring2("abcabcbb"))
+// console.log(longestSubstring2("bbbbb"))
+// console.log(longestSubstring2("pwwkew"))
+// console.log(longestSubstring2("dvdf"))
+// console.log(longestSubstring2("asjrgapa"))
+
+function longestSub3(s) {
+    const currentChar = []
+    let strArr = s.split("")
+    let length = strArr.length
+    let check = new Set()
+    let shifted
+    let whileshift
+    let max = 0
+    for (let i = 0; i < length; i++) {
+        shifted = strArr.shift()
+        check.add(shifted)
+        currentChar.push(shifted)
+        while (currentChar.length !== check.size) {
+            whileshift = currentChar.shift()
+            if (whileshift === shifted) {}
+            else check.delete(whileshift)
+        } 
+        max = Math.max(max, currentChar.length)
+    } return max
+}
+// can also do using the l and r pointers 
+console.log(longestSub3("abcabcbb"))
+console.log(longestSub3("bbbbb"))
+console.log(longestSub3("pwwkew"))
+console.log(longestSub3("dvdf"))
+console.log(longestSub3("asjrgapa"))
