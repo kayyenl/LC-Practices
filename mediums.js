@@ -208,35 +208,38 @@ function MaxSubarray2(nums) {
 // Output: 0
 // Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
 
-function MaxProdArray(nums) {
-     let pivotIndex
-     let tracknum = 1
-     for (let i = 0; i < nums.length; i++) {
-        if (nums[i] < 0)
-     }
-}
+// function MaxProdArray(nums) {
+//      let pivotIndex
+//      let tracknum = 1
+//      for (let i = 0; i < nums.length; i++) {
+//         if (nums[i] < 0)
+//      }
+// }
 
-function findPivot(nums) {
-    let pivotIndex = -1
-    let tracknum = 1
-    for (let i = 0; i < nums.length; i++) {
-        if (nums[i] < 0) {
-            pivotIndex = i
-            trankNum *= -1
-        }
-    }
-}
+// function findPivot(nums) {
+//     let pivotIndex = -1
+//     let tracknum = 1
+//     for (let i = 0; i < nums.length; i++) {
+//         if (nums[i] < 0) {
+//             pivotIndex = i
+//             trankNum *= -1
+//         }
+//     }
+// }
 
 function BFMaxProdArray(nums) {
-    let maxNum = nums[i]
+    let maxNum = nums[0]
     let tempNum
     for (let i = 0; i < nums.length; i++) {
-    tempNum = nums[i]
-        for (let j = 1; j < nums.length; j++) {
-            tempNum += nums[i]
+        tempNum = nums[i]
+        maxNum = Math.max(tempNum, maxNum)
+        for (let j = i + 1; j < nums.length; j++) {
+            tempNum *= nums[j]
             maxNum = Math.max(tempNum, maxNum)
         }
-    } return maXNum
+    } return maxNum
 }
 
-console.log
+console.log(BFMaxProdArray([2,3,-2,4]))
+console.log(BFMaxProdArray([-2,0,-1]))
+console.log(BFMaxProdArray([0,2]))
