@@ -123,7 +123,7 @@ function ProductArraySelf2Space(nums) {
 
 // A subarray is a contiguous part of an array.
 
- 
+
 
 // Example 1:
 // Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
@@ -144,7 +144,7 @@ function MaxSubarray(nums) {
     let leftp = 0
     let rightp = nums.length - 1
     let maxNeg = 0
-
+    
     for (let i = 0; i < nums.length; i++) {
         if (i === 0) {
             leftArr.push(nums[i])
@@ -170,7 +170,7 @@ function MaxSubarray(nums) {
 function MaxSubarray2(nums) {
     let maxUpTillHere 
     let maxSoFar
-
+    
     for (let i = 0; i < nums.length; i++) {
         if (i === 0) {
             maxUpTillHere = nums[i]
@@ -187,3 +187,56 @@ function MaxSubarray2(nums) {
 // console.log(MaxSubarray2([-2,1,-3,4,-1,2,1,-5,4])) 
 // console.log(MaxSubarray2([1])) 
 // console.log(MaxSubarray2([1,2]))   
+
+
+// -------------------------------------------------------------------
+// 4. Maximum Product Subarray
+// Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, and return the product.
+
+// The test cases are generated so that the answer will fit in a 32-bit integer.
+
+// A subarray is a contiguous subsequence of the array.
+
+ 
+// Example 1:
+// Input: nums = [2,3,-2,4]
+// Output: 6
+// Explanation: [2,3] has the largest product 6.
+
+// Example 2:
+// Input: nums = [-2,0,-1]
+// Output: 0
+// Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
+
+function MaxProdArray(nums) {
+     let pivotIndex
+     let tracknum = 1
+     for (let i = 0; i < nums.length; i++) {
+        if (nums[i] < 0)
+     }
+}
+
+function findPivot(nums) {
+    let pivotIndex = -1
+    let tracknum = 1
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] < 0) {
+            pivotIndex = i
+            trankNum *= -1
+        }
+    }
+}
+
+function BFMaxProdArray(nums) {
+    let maxNum = nums[i]
+    let tempNum
+    for (let i = 0; i < nums.length; i++) {
+    tempNum = nums[i]
+        for (let j = 1; j < nums.length; j++) {
+            tempNum += nums[i]
+            maxNum = Math.max(tempNum, maxNum)
+        }
+    } return maXNum
+}
+
+console.log
