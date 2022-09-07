@@ -400,7 +400,7 @@ function longestSub3(s) {
     }
     memo[key] = 
         uniquePaths(m - 1, n, memo) + uniquePaths(m, n - 1, memo)
-    return memo[key]
+    return memo[key] 
  }
  
 //  console.log(uniquePaths(3,7))
