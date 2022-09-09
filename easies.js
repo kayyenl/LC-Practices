@@ -336,8 +336,6 @@ function MergeTwoSortedLists(list1, list2) {
             list3.push(Math.max(var1, var2))
             list3.push(Math.min(var1, var2))
         }
-        if (var1 === undefined) {}
-        if (var2 === undefined) {}
     } return list3
 }
 
