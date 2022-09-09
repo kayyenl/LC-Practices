@@ -340,3 +340,27 @@ function MergeTwoSortedLists(list1, list2) {
 }
 
 console.log(MergeTwoSortedLists([1,2,4],[1,3,4]))
+
+function merge2SLists(list1, list2) {
+    let list3 = new ListNode()
+    let pushed1
+    let pushed2
+    while (list1.val + list2.val !== 0) {
+        if (list1.val === 0) {
+            list3 = exhaust(list3, list2)
+        } else if (list2.val === 0) {
+            list3 = exhaust(list3, list1)
+        } else {
+            pushed1 = list1.shift()
+            pushed2 = list2.shift()
+            list3.push(Math.max(pushed1, pushed2))
+            list3.push(Math.min(pushed1, pushed2))
+        }
+    } return list3
+}
+
+function exhaust(addee, adder) {
+    while (adder.val !== 0) {
+        addee.push(adder.shift())
+    } return addee
+}
