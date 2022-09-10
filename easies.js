@@ -398,5 +398,5 @@ function MergeTwoSortedIm(list1, list2) {
     if (list2 === null) {
         curr.next = list1
     } 
-    return dummy.next
+    return dummy.next 
 }
