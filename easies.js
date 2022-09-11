@@ -573,11 +573,64 @@ function uniqueEmail(emails) {
         domstr = emails[i].slice(atindex, emails[i].length)
         combostr = localstr + domstr
         emailset.add(combostr)
-        console.log(combostr, i, emailset.size)
+        // console.log(combostr, i, emailset.size)
         plusindex = undefined
     } return emailset.size
 }
+//should have used split to prevent traversing so many times in the replaceAll line, totally can be avoided.
 
-console.log(uniqueEmail(["test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"]))
-console.log(uniqueEmail(["a@leetcode.com","b@leetcode.com","c@leetcode.com"]))
-console.log(uniqueEmail(["fg.r.u.uzj+o.pw@kziczvh.com","r.cyo.g+d.h+b.ja@tgsg.z.com","fg.r.u.uzj+o.f.d@kziczvh.com","r.cyo.g+ng.r.iq@tgsg.z.com","fg.r.u.uzj+lp.k@kziczvh.com","r.cyo.g+n.h.e+n.g@tgsg.z.com","fg.r.u.uzj+k+p.j@kziczvh.com","fg.r.u.uzj+w.y+b@kziczvh.com","r.cyo.g+x+d.c+f.t@tgsg.z.com","r.cyo.g+x+t.y.l.i@tgsg.z.com","r.cyo.g+brxxi@tgsg.z.com","r.cyo.g+z+dr.k.u@tgsg.z.com","r.cyo.g+d+l.c.n+g@tgsg.z.com","fg.r.u.uzj+vq.o@kziczvh.com","fg.r.u.uzj+uzq@kziczvh.com","fg.r.u.uzj+mvz@kziczvh.com","fg.r.u.uzj+taj@kziczvh.com","fg.r.u.uzj+fek@kziczvh.com"]))
+// console.log(uniqueEmail(["test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"]))
+// console.log(uniqueEmail(["a@leetcode.com","b@leetcode.com","c@leetcode.com"]))
+// console.log(uniqueEmail(["fg.r.u.uzj+o.pw@kziczvh.com","r.cyo.g+d.h+b.ja@tgsg.z.com","fg.r.u.uzj+o.f.d@kziczvh.com","r.cyo.g+ng.r.iq@tgsg.z.com","fg.r.u.uzj+lp.k@kziczvh.com","r.cyo.g+n.h.e+n.g@tgsg.z.com","fg.r.u.uzj+k+p.j@kziczvh.com","fg.r.u.uzj+w.y+b@kziczvh.com","r.cyo.g+x+d.c+f.t@tgsg.z.com","r.cyo.g+x+t.y.l.i@tgsg.z.com","r.cyo.g+brxxi@tgsg.z.com","r.cyo.g+z+dr.k.u@tgsg.z.com","r.cyo.g+d+l.c.n+g@tgsg.z.com","fg.r.u.uzj+vq.o@kziczvh.com","fg.r.u.uzj+uzq@kziczvh.com","fg.r.u.uzj+mvz@kziczvh.com","fg.r.u.uzj+taj@kziczvh.com","fg.r.u.uzj+fek@kziczvh.com"]))
+
+// ------------------------------------------------------------------
+// 11. Rotate String (finished in 22.5 minutes!!)
+// Given two strings s and goal, return true if and only if s can become goal after some number of shifts on s.
+
+// A shift on s consists of moving the leftmost character of s to the rightmost position.
+
+// For example, if s = "abcde", then it will be "bcdea" after one shift.
+ 
+
+// Example 1:
+// Input: s = "abcde", goal = "cdeab"
+// Output: true
+
+// Example 2:
+// Input: s = "abcde", goal = "abced"
+// Output: false
+
+function rotateStr(s, goal) {
+    if (s.length !== goal.length) return false
+    let slength = s.length
+    let firstchar, secondchar
+    for (let i = 0; i < slength; i++) {
+        if (s.slice(0) === goal.slice(0)) {
+            if (s === goal) return true
+        } else {
+            firstchar = s[0]
+            lastchar = s[slength - 1]
+            s[0] = 1
+        }
+    } return false
+}
+
+function rotateStrArr(s, goal) {
+    if (s.length !== goal.length) return false
+    const sArr = s.split("")
+    const goalArr = goal.split("")
+    let firstChar
+    for (let i = 0; i < sArr.length; i++) {
+        if (sArr[0] == goalArr[0] 
+            && sArr.toString() == goalArr.toString()) {
+          return true
+        } else {
+            firstChar = sArr[0]
+            sArr.shift()
+            sArr.push(firstChar)
+        }
+    } return false
+}
+
+console.log(rotateStrArr("abcde", "cdeab"))
+console.log(rotateStrArr("abcde", "abced"))
