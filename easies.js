@@ -419,7 +419,7 @@ function MergeTwoSortedIm(list1, list2) {
 
 // Return the letter that was added to t.
 
- 
+
 
 // Example 1:
 // Input: s = "abcd", t = "abcde"
@@ -459,3 +459,13 @@ function findDifference(s, t) {
 }
 
 console.log(findDifference("hello", "olclhe"))
+
+function findDifferenceGoodSyntax(s, t) {
+    const setS = {}
+    const setT = {}
+    
+}
+
+console.log(findDifferenceGoodSyntax("hello", "olclhe"))
+
+// ------------------------------------------------------------------
