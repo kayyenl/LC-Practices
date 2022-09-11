@@ -559,7 +559,7 @@ function uniqueEmail(emails) {
     for (let i = 0; i < emails.length; i++) {
         email = emails[i]
         for (let j = 0; j < email.length; j++) {
-            if (email[j] === "+") {
+            if (email[j] === "+" && plusindex === undefined) {
                 plusindex = j
             } else if (email[j] === "@") {
                 atindex = j
@@ -570,9 +570,10 @@ function uniqueEmail(emails) {
             localstr = localstr.slice(0, plusindex)
         } 
         localstr = localstr.replaceAll(".", "")
-        domstr = emails[i].slice(atindex + 1, emails[i].length)
+        domstr = emails[i].slice(atindex, emails[i].length)
         combostr = localstr + domstr
         emailset.add(combostr)
+        console.log(combostr, i, emailset.size)
         plusindex = undefined
     } return emailset.size
 }
