@@ -387,7 +387,7 @@ function longestSub3(s) {
 // 2. Down -> Down -> Right
 // 3. Down -> Right -> Down
 
- function uniquePaths(m, n, memo = {}) {
+function uniquePaths(m, n, memo = {}) {
     const key = m + "-" + n
     if (key in memo) return memo[key]
     if (m === 0 || n === 0) {
@@ -399,9 +399,11 @@ function longestSub3(s) {
         return 1
     }
     memo[key] = 
-        uniquePaths(m - 1, n, memo) + uniquePaths(m, n - 1, memo)
+    uniquePaths(m - 1, n, memo) + uniquePaths(m, n - 1, memo)
     return memo[key] 
  }
  
 //  console.log(uniquePaths(3,7))
 //  console.log(uniquePaths(3,2))
+
+// -------------------------------------------------------------------
