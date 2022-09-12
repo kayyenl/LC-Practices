@@ -648,13 +648,13 @@ function rotateStrArr(s, goal) {
 // Output: "10101"
 
 function addBinary(a, b) {
-    console.log(parseInt(a) + parseInt(b))
-    let workingnum = (parseInt(a) + parseInt(b)).toString().split("")
+    let workingnum = (parseInt(a) + parseInt(b))
+    workingnum = workingnum.toPrecision(workingnum.length).split("")
     let carryover = false
     let workingchar
     for (let i = workingnum.length - 1; i >= 0; i--) {
         workingchar = parseInt(workingnum[i])
-        console.log(workingchar)
+        // console.log(workingchar)
         if (carryover === true) {
             workingchar += 1
             carryover = false
@@ -670,7 +670,29 @@ function addBinary(a, b) {
     } return workingnum.join("")
 }
 
-console.log(addBinary("11", "1"))
-console.log(addBinary("1010", "1011"))
-console.log(addBinary("10100000100100110110010000010101111011011001101110111111111101000000101111001110001111100001101",
+// console.log(addBinary("11", "1"))
+// console.log(addBinary("1010", "1011"))
+// console.log(addBinary("10100000100100110110010000010101111011011001101110111111111101000000101111001110001111100001101",
+// "110101001011101110001111100110001010100001101011101010000011011011001011101111001100000011011110011"))
+
+function addBinarySimple(a, b) {
+    let i = a.length - 1;
+    let j = b.length - 1;
+    let remainder = 0
+    let returnstr = ""
+    while (i >= 0 || j >= 0) {
+        addfromA = parseInt(a[i]) || 0
+        addfromB = parseInt(b[j]) || 0
+        const sum = addfromA + addfromB + remainder
+        const digit = sum % 2
+        returnstr = digit + returnstr //this is prepended
+        remainder = sum > 1 ? 1 : 0
+        i--, j--
+    } returnstr = (remainder ? "1" : "0") + returnstr
+    return returnstr
+}
+
+console.log(addBinarySimple("11", "1"))
+console.log(addBinarySimple("1010", "1011"))
+console.log(addBinarySimple("10100000100100110110010000010101111011011001101110111111111101000000101111001110001111100001101",
 "110101001011101110001111100110001010100001101011101010000011011011001011101111001100000011011110011"))
