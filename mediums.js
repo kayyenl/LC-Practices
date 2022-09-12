@@ -432,3 +432,21 @@ function uniquePaths(m, n, memo = {}) {
 // Input: nums = [11,13,15,17]
 // Output: 11
 // Explanation: The original array was [11,13,15,17] and it was rotated 4 times.
+
+function MinRotSort(nums) {
+    let l = 0
+    let r = nums.length - 1
+    let mid = Math.floor(nums.length / 2)
+    while (l !== r) {
+        if (nums[l] < nums[r]) return nums[l]
+        if (nums[mid] > nums[r]) {
+            l = mid + 1
+        } else {
+            r = mid - 1
+        } mid = Math.floor((r + l)/2)
+    } return nums[l]
+}
+
+console.log(MinRotSort([3,4,5,1,2]))
+console.log(MinRotSort([4,5,6,7,0,1,2]))
+console.log(MinRotSort([11,13,15,17]))
