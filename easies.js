@@ -590,7 +590,7 @@ function uniqueEmail(emails) {
 // A shift on s consists of moving the leftmost character of s to the rightmost position.
 
 // For example, if s = "abcde", then it will be "bcdea" after one shift.
- 
+
 
 // Example 1:
 // Input: s = "abcde", goal = "cdeab"
@@ -632,5 +632,43 @@ function rotateStrArr(s, goal) {
     } return false
 }
 
-console.log(rotateStrArr("abcde", "cdeab"))
-console.log(rotateStrArr("abcde", "abced"))
+// console.log(rotateStrArr("abcde", "cdeab"))
+// console.log(rotateStrArr("abcde", "abced"))
+
+// ------------------------------------------------------------------
+// 12. Add Binary
+// Given two binary strings a and b, return their sum as a binary string.
+
+// Example 1:
+// Input: a = "11", b = "1"
+// Output: "100"
+
+// Example 2:
+// Input: a = "1010", b = "1011"
+// Output: "10101"
+
+function addBinary(a, b) {
+    let workingnum = (parseInt(a) + parseInt(b)).split("")
+    console.log(workingnum)
+    let carryover = false
+    let workingchar
+    for (let i = workingnum.length - 1; i >= 0; i--) {
+        workingchar = parseInt(workingnum[i])
+        console.log(workingchar)
+        if (carryover === true) {
+            workingchar += 1
+            carryover = false
+        }
+        if (workingchar >= 2) {
+            workingchar -= 2
+            carryover = true
+        } 
+        workingnum[i] = workingchar.toString()
+    } 
+    if (carryover === true) {
+        workingnum += "1"
+    } return workingnum
+}
+
+console.log(addBinary("11", "1"))
+console.log(addBinary("1010", "1011"))
