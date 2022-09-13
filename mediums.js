@@ -492,6 +492,11 @@ var MinStack = function() {
 
 MinStack.prototype.push = function(val) {
     this.array.unshift(val)
+    if (this.lowestval === undefined) {
+        this.lowestval = val
+    } else {
+        if (val < this.lowestval) this.lowestval = val
+    }
 };
 
 MinStack.prototype.pop = function() {
@@ -509,6 +514,7 @@ MinStack.prototype.getMin = function() {
 };
 
 let min = new MinStack()
+console.log(min.lowestval)
 min.push(-2)
 min.push(0)
 min.push(-3)
