@@ -487,20 +487,23 @@ function MinRotSort(nums) {
 
 var MinStack = function() {
     this.array = []
-    this.lowestval
+    this.lowestval = []
 }
 
 MinStack.prototype.push = function(val) {
     this.array.unshift(val)
-    if (this.lowestval === undefined) {
-        this.lowestval = val
+    if (this.lowestval.length === 0) {
+        this.lowestval.unshift(val)
     } else {
-        if (val < this.lowestval) this.lowestval = val
+        if (val <= this.lowestval[0]) this.lowestval.unshift(val)
     }
 };
 
 MinStack.prototype.pop = function() {
-    this.array.shift()
+    var removedval = this.array.shift()
+    if (this.lowestval[0] === removedval) {
+        this.lowestval.shift()
+    }
 };
 
 MinStack.prototype.top = function() {
@@ -510,17 +513,30 @@ MinStack.prototype.top = function() {
 };
 
 MinStack.prototype.getMin = function() {
-    return this.lowestval
+    return this.lowestval[0]
 };
 
 let min = new MinStack()
-console.log(min.lowestval)
-min.push(-2)
+// console.log(min.lowestval)
+min.push(2)
+console.log(min)
 min.push(0)
-min.push(-3)
+console.log(min)
+min.push(3)
+console.log(min)
+min.push(0)
+console.log(min)
 min.getMin()
+console.log(min)
 min.pop()
-min.top()
+console.log(min)
 min.getMin()
-
-console.log(min.array)
+console.log(min)
+min.pop()
+console.log(min)
+min.getMin()
+console.log(min)
+min.pop()
+console.log(min)
+min.getMin()
+console.log(min)
