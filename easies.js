@@ -761,6 +761,6 @@ function RomanToNum(s) {
     } return returnval
 }
 
-console.log(RomanToNum("III"))
-console.log(RomanToNum("LVIII"))
-console.log(RomanToNum("MCMXCIV"))
+// console.log(RomanToNum("III"))
+// console.log(RomanToNum("LVIII"))
+// console.log(RomanToNum("MCMXCIV"))
