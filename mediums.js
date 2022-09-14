@@ -542,4 +542,70 @@ MinStack.prototype.getMin = function() {
 // console.log(min)
 
 // -------------------------------------------------------------------
+// 9. Integer to Roman
+// Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
 
+// Symbol       Value
+// I             1
+// V             5
+// X             10
+// L             50
+// C             100
+// D             500
+// M             1000
+// For example, 2 is written as II in Roman numeral, just two one's added together. 12 is written as XII, which is simply X + II. The number 27 is written as XXVII, which is XX + V + II.
+
+// Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
+
+// I can be placed before V (5) and X (10) to make 4 and 9. 
+// X can be placed before L (50) and C (100) to make 40 and 90. 
+// C can be placed before D (500) and M (1000) to make 400 and 900.
+// Given an integer, convert it to a roman numeral.
+
+ 
+
+// Example 1:
+// Input: num = 3
+// Output: "III"
+// Explanation: 3 is represented as 3 ones.
+
+// Example 2:
+// Input: num = 58
+// Output: "LVIII"
+// Explanation: L = 50, V = 5, III = 3.
+
+// Example 3:
+// Input: num = 1994
+// Output: "MCMXCIV"
+// Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+
+
+let hashMap = {}
+hashMap["I"] = 1
+hashMap["V"] = 5
+hashMap["X"] = 10
+hashMap["L"] = 50
+hashMap["C"] = 100
+hashMap["D"] = 500
+hashMap["M"] = 1000
+
+let otherHash = {}
+otherHash["1"] = "I"
+otherHash["5"] = "V"
+otherHash["10"] = "X"
+otherHash["50"] = "L"
+otherHash["100"] = "C"
+otherHash["500"] = "D"
+otherHash["1000"] = "M"
+
+function IntToRom(num) {
+    let zeroes = ""
+    let tempstring = ""
+    let returnstr = ""
+    let numString = num.toString()
+    for (let i = numString.length - 1; i >= 0; i--) {
+        if (numString[i] === "4") {
+            
+        }
+    }
+}
