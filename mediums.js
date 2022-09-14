@@ -590,22 +590,34 @@ hashMap["D"] = 500
 hashMap["M"] = 1000
 
 let otherHash = {}
-otherHash["1"] = "I"
-otherHash["5"] = "V"
-otherHash["10"] = "X"
-otherHash["50"] = "L"
-otherHash["100"] = "C"
-otherHash["500"] = "D"
-otherHash["1000"] = "M"
+numberHash["1"] = "I"
+numberHash["5"] = "V"
+numberHash["10"] = "X"
+numberHash["50"] = "L"
+numberHash["100"] = "C"
+numberHash["500"] = "D"
+numberHash["1000"] = "M"
 
 function IntToRom(num) {
     let zeroes = ""
-    let tempstring = ""
+    let tempstring1 = ""
+    let tempstring2 = ""
     let returnstr = ""
     let numString = num.toString()
     for (let i = numString.length - 1; i >= 0; i--) {
-        if (numString[i] === "4") {
-            
+        let focusstr = numString[i]
+        let focusnum = focusstr.parseInt()
+        if (i === numString.length) {}
+        else {
+            zeroes = "0" + zeroes
         }
-    }
+        if (focusstr === "4" || focusstr === "9") {
+            tempstring1 = 
+                numberHash[(focusnum + 1).toString() + zeroes]
+            tempstring2 = numberHash["1" + zeroes]
+            returnstr = tempstring2 + tempstring1 + returnstr
+        }
+    } return returnstr
 }
+
+console.log(IntToRom(4444))
