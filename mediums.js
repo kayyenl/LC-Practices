@@ -579,17 +579,7 @@ MinStack.prototype.getMin = function() {
 // Output: "MCMXCIV"
 // Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 
-
-let hashMap = {}
-hashMap["I"] = 1
-hashMap["V"] = 5
-hashMap["X"] = 10
-hashMap["L"] = 50
-hashMap["C"] = 100
-hashMap["D"] = 500
-hashMap["M"] = 1000
-
-let otherHash = {}
+let numberHash = {}
 numberHash["1"] = "I"
 numberHash["5"] = "V"
 numberHash["10"] = "X"
@@ -600,24 +590,37 @@ numberHash["1000"] = "M"
 
 function IntToRom(num) {
     let zeroes = ""
-    let tempstring1 = ""
-    let tempstring2 = ""
+    let tempFiveTens = ""
+    let tempOnes = ""
     let returnstr = ""
     let numString = num.toString()
     for (let i = numString.length - 1; i >= 0; i--) {
         let focusstr = numString[i]
-        let focusnum = focusstr.parseInt()
-        if (i === numString.length) {}
-        else {
+        let focusnum = parseInt(focusstr)
+        if (i !== numString.length - 1) {
             zeroes = "0" + zeroes
         }
+        tempOnes = numberHash["1" + zeroes]
         if (focusstr === "4" || focusstr === "9") {
-            tempstring1 = 
+            tempFiveTens = 
                 numberHash[(focusnum + 1).toString() + zeroes]
-            tempstring2 = numberHash["1" + zeroes]
-            returnstr = tempstring2 + tempstring1 + returnstr
+            returnstr = tempOnes + tempFiveTens + returnstr
+        } else {
+            if (focusnum >= 5) {
+                tempFiveTens = numberHash["5" + zeroes]
+                focusnum -= 5
+            }
+            for (let i = 0; i < focusnum; i++) {
+                returnstr = tempOnes + returnstr
+            } returnstr = tempFiveTens + returnstr
         }
+        tempFiveTens = ""
+        tempOnes = ""
     } return returnstr
 }
 
-console.log(IntToRom(4444))
+console.log(IntToRom(3))
+console.log(IntToRom(2))
+console.log(IntToRom(58))
+console.log(IntToRom(1994))
+console.log(IntToRom(1000))
