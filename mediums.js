@@ -619,8 +619,8 @@ function IntToRom(num) {
     } return returnstr
 }
 
-console.log(IntToRom(3))
-console.log(IntToRom(2))
-console.log(IntToRom(58))
-console.log(IntToRom(1994))
-console.log(IntToRom(1000))
+// console.log(IntToRom(3))
+// console.log(IntToRom(2))
+// console.log(IntToRom(58))
+// console.log(IntToRom(1994))
+// console.log(IntToRom(1000))
