@@ -788,14 +788,18 @@ function RomanToNum(s) {
 // Output: false
 
 //Preprocessing
-const bracketMap = {}
-bracketMap["("] = ")"
-bracketMap["["] = "]"
-bracketMap["{"] = "}"
+const bracketMap = new Map()
+bracketMap.set("(", ")")
+bracketMap.set("[", "]")
+bracketMap.set("{", "}")
 
 function ValidParentheses(s) {
-    let closingCheck
+    const checkingStack = []
     for (let i = 0; i < s.length; i++) {
-        if (i === 0 && bracketMap.has(s[i])) 
-    }
+        if (checkingStack[0] === s[i]) {
+            checkingStack.shift()
+        } else if (bracketMap.has(s[i])) {
+            checkingStack.unshift(bracketMap.get(s[i]))
+        } else return false
+    } return true
 }
