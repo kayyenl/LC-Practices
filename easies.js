@@ -801,5 +801,10 @@ function ValidParentheses(s) {
         } else if (bracketMap.has(s[i])) {
             checkingStack.unshift(bracketMap.get(s[i]))
         } else return false
-    } return true
+    } if (checkingStack.length === 0) return true
+    else return false
 }
+
+// console.log(ValidParentheses("()"))
+// console.log(ValidParentheses("()[]{}"))
+// console.log(ValidParentheses("(]"))
