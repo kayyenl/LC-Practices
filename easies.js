@@ -854,7 +854,11 @@ function removeDupes(nums) {
     let i = nums.length - 1
     let prevnum = -1
     let counter = 0
-    while (nums[i-1] < nums[i]) {
+    if (nums.length === 1) {
+        nums.unshift[0]
+        return 1
+    }
+    while (nums[i-1] <= nums[i]) {
         if (nums[i] !== prevnum) {
             prevnum = nums[i]
             nums.unshift(nums[i])
@@ -867,4 +871,7 @@ function removeDupes(nums) {
 }
 
 console.log(removeDupes([1,1,2]))
+console.log(removeDupes([1,2,2,3,3,3,4,4]))
+console.log(removeDupes([1,2]))
+console.log(removeDupes([1]))
 console.log(removeDupes([0,0,1,1,1,2,2,3,3,4]))
