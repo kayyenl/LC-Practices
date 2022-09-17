@@ -851,15 +851,20 @@ function ValidParentheses(s) {
 // It does not matter what you leave beyond the returned k (hence they are underscores).
 
 function removeDupes(nums) {
-    let nextnum = -1
     let i = nums.length - 1
     let prevnum = -1
-    while (nextnum < nums[i]) {
+    let counter = 0
+    while (nums[i-1] < nums[i]) {
         if (nums[i] !== prevnum) {
             prevnum = nums[i]
             nums.unshift(nums[i])
+            counter += 1
         } else {
             i -= 1
         }
-    }
+    } console.log(nums)
+    return counter
 }
+
+console.log(removeDupes([1,1,2]))
+console.log(removeDupes([0,0,1,1,1,2,2,3,3,4]))
