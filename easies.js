@@ -883,22 +883,20 @@ function removeDupesDebugged(nums) {
     let counter = 0
     if (nums.length === 1) {
         nums.unshift[0]
-        return nums
+        return 1
     }
     while (nums[i-1] <= nums[i]) {
         if (nums[i] !== prevnum) {
             prevnum = nums[i]
             nums.unshift(nums[i])
             counter += 1
-        } else {
-            i -= 1
-        }
-    } return nums
+        } else i -= 1
+    } return counter
 }
 
-console.log(removeDupesDebugged([1,1,2]))
-console.log(removeDupesDebugged([1,2,2,3,3,3,4,4]))
-console.log(removeDupesDebugged([1,2]))
-console.log(removeDupesDebugged([1]))
-console.log(removeDupesDebugged([0,0,1,1,1,2,2,3,3,4]))
-console.log(removeDupesDebugged([-3,-1]))
+// console.log(removeDupesDebugged([1,1,2]))
+// console.log(removeDupesDebugged([1,2,2,3,3,3,4,4]))
+// console.log(removeDupesDebugged([1,2]))
+// console.log(removeDupesDebugged([1]))
+// console.log(removeDupesDebugged([0,0,1,1,1,2,2,3,3,4]))
+// console.log(removeDupesDebugged([-3,-1]))
