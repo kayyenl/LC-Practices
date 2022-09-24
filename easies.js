@@ -935,6 +935,11 @@ function climbStair(n, memo = {}) {// remember how to declare memo when not avai
         memo[n] = 2
         return 2
     }
-    
-    memo[n] = 
+    memo[n] = climbStair(n - 1, memo) + climbStair(n - 2, memo)
+    return memo[n]
 }   
+
+// console.log(climbStair(5))
+// console.log(climbStair(13))
+// console.log(climbStair(18))
+// console.log(climbStair(20))
