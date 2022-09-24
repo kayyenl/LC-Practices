@@ -646,12 +646,23 @@ function IntToRom(num) {
 // Input: coins = [1], amount = 0
 // Output: 0
 
-function coinChange(coins, amount, 
-    memo = {}, counter = 1, bestscore = -1) {
+function coinChange(coins, amount, memo = {}, counter = 1) {
     if (amount === 0) {
-        bestscore = counter
+        memo[amount] = counter
+        return counter
+    } else if (amount < 0) {
+        return Number.MAX_SAFE_INTEGER
+    } else if (amount in memo) {
+        return memo[amount]
     }
-    for (let item in coins) {
-        memo[item]
-    }
+
+    let mincount = Number.MAX_SAFE_INTEGER
+    for (let coin of coins) {
+        const remainder = amount - coin
+        memo[remainder] = coinChange(coins, 
+            remainder, memo, counter + 1)
+        mincount = Math.min(mincount, memo[remainder])
+    } return mincount
 }  
+
+console.log(coinChange([1,2,5], 11))
