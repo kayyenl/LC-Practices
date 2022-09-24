@@ -925,7 +925,7 @@ function removeDupesDebugged(nums) {
 // 2. 1 step + 2 steps
 // 3. 2 steps + 1 step
 
-function climbStair(n, memo = {}) {
+function climbStair(n, memo = {}) {// remember how to declare memo when not available.
     if (n in memo) return memo[n]
     if (n === 1) {
         memo[n] = 1
