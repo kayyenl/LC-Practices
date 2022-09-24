@@ -646,6 +646,12 @@ function IntToRom(num) {
 // Input: coins = [1], amount = 0
 // Output: 0
 
-function coinChange(coins, amount, memo = {}, counter = 1) {
-    if ()
+function coinChange(coins, amount, 
+    memo = {}, counter = 1, bestscore = -1) {
+    if (amount === 0) {
+        bestscore = counter
+    }
+    for (let item in coins) {
+        memo[item]
+    }
 }  
