@@ -649,8 +649,6 @@ function IntToRom(num) {
 function coinChange(coins, amount, memo = {}) {
     if (amount === 0) {
         return 0
-    } else if (amount < 0) {
-        return Infinity
     } else if (amount in memo) {
         return memo[amount]
     }
@@ -658,9 +656,11 @@ function coinChange(coins, amount, memo = {}) {
     mincount = Infinity
     for (let coin of coins) {
         const remainder = amount - coin
+        if (amount - coin < 0) continue
         memo[remainder] = coinChange(coins, remainder, memo) + 1
         mincount = Math.min(mincount, memo[remainder])
-    } return mincount === Infinity ? -1 : mincount
+    } console.log(memo)
+    return mincount === Infinity ? -1 : mincount
 }  
 
 console.log(coinChange([1,2,5], 11))
