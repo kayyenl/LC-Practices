@@ -666,3 +666,4 @@ function coinChange(coins, amount, memo = {}, counter = 1) {
 }  
 
 console.log(coinChange([1,2,5], 11))
+console.log(coinChange([1,2,5], 8))
