@@ -671,22 +671,28 @@ function coinChange(coins, amount, memo = {}) {
 function coinChange2(coins, amount, memo = {}) {
     // these are the base cases.
     if (amount === 0) {
-        memo[0] = 0
         return 0
+    } else if (amount < 0) {
+        return Infinity
     } else if (amount in memo) {
         return memo[amount]
     }
 
     let minvalue = Infinity
-    for (let coin in coins) {
+    for (let coin of coins) {
         let remainder = amount - coin
         if (remainder < 0) continue
-        minvalue = Math.min(minvalue, coinChange2(coins, remainder, memo) + 1) 
-    } return memo[amount] === Infinity ? -1 : memo[amount]
-
+        if (coinChange2(coins, remainder, memo) >= 0) {
+            minvalue = Math.min(minvalue, coinChange2(coins,        remainder, memo) + 1) 
+        }
+    } 
+    memo[amount] = minvalue === Infinity ? -1 : minvalue
+    return memo[amount]
 }
 
-console.log(coinChange2([1,2,5], 11))
-console.log(coinChange2([1,2,5], 8))
-console.log(coinChange2([1,2,5], 1))
-console.log(coinChange2([2,5], 3))
+// console.log(coinChange2([1,2,5], 11))
+// console.log(coinChange2([1,2,5], 19))
+// console.log(coinChange2([1,2,5], 8))
+// console.log(coinChange2([1,2,5], 1))
+// console.log(coinChange2([2,5], 3))
+// console.log(coinChange2([2], 3))
