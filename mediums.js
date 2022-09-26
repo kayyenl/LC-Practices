@@ -655,15 +655,38 @@ function coinChange(coins, amount, memo = {}) {
 
     mincount = Infinity
     for (let coin of coins) {
-        const remainder = amount - coin
-        if (amount - coin < 0) continue
+        let remainder = amount - coin
+        if ((amount - coin) < 0) continue
         memo[remainder] = coinChange(coins, remainder, memo) + 1
         mincount = Math.min(mincount, memo[remainder])
     } console.log(memo)
     return mincount === Infinity ? -1 : mincount
 }  
 
-console.log(coinChange([1,2,5], 11))
-console.log(coinChange([1,2,5], 8))
-console.log(coinChange([1,2,5], 1))
-console.log(coinChange([2,5], 3))
+// console.log(coinChange([1,2,5], 11))
+// console.log(coinChange([1,2,5], 8))
+// console.log(coinChange([1,2,5], 1))
+// console.log(coinChange([2,5], 3))
+
+function coinChange2(coins, amount, memo = {}) {
+    // these are the base cases.
+    if (amount === 0) {
+        memo[0] = 0
+        return 0
+    } else if (amount in memo) {
+        return memo[amount]
+    }
+
+    let minvalue = Infinity
+    for (let coin in coins) {
+        let remainder = amount - coin
+        if (remainder < 0) continue
+        minvalue = Math.min(minvalue, coinChange2(coins, remainder, memo) + 1) 
+    } return memo[amount] === Infinity ? -1 : memo[amount]
+
+}
+
+console.log(coinChange2([1,2,5], 11))
+console.log(coinChange2([1,2,5], 8))
+console.log(coinChange2([1,2,5], 1))
+console.log(coinChange2([2,5], 3))
